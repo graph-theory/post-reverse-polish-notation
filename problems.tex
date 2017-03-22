@@ -1,0 +1,67 @@
+\documentclass[addpoints,12pt]{exam}
+
+
+\makeatletter
+\expandafter\providecommand\expandafter*\csname ver@framed.sty\endcsname
+{2003/07/21 v0.8a Simulated by exam}
+\makeatother
+
+\usepackage{xcolor}
+\usepackage{minted}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{gensymb}
+\usepackage{lmodern}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{adjustbox}
+\usepackage{upquote}
+\usepackage{amsmath}
+\usepackage[hidelinks]{hyperref}
+\usetikzlibrary{mindmap,shadows, shapes, arrows, positioning}
+
+\tikzstyle{rect} = [rectangle, fill=ProcessBlue, text width=4.5em, text centered, minimum height=4em, rounded corners]
+\tikzstyle{line} = [draw, ->, very thick]
+\tikzstyle{oval} = [ellipse, fill=SeaGreen, text width=5em, text centered]
+
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+
+\renewcommand{\refname}{\selectfont\normalsize References} 
+\pagestyle{headandfoot}
+
+\header{\textbf{Problem Sheet: MU}}{}{Theory of Algorithms}
+\footer{}{Page \thepage\ of \numpages}{}
+\marksnotpoints
+\pointsinrightmargin
+
+\begin{coverpages}
+\end{coverpages}
+
+\begin{document}
+%!TEX root = problems.tex
+
+%\printanswers
+
+\noindent
+Reverse Polish notation is a method for writing expressions involving operators and operands.
+When the number of operands that each operator takes is fixed, reverse Polish notation does not require any brackets or precedence of operators in order to unambiguously represent an expression.
+
+\subsubsection*{Example}
+Let’s start with an example.
+Consider the following bracketed expression.
+
+$$ ((5 + 4) \times 9) \div (6 - 3) $$
+
+This expression is written in what we call infix notation -- the (binary) operators are written inbetween their (two) operands.
+In reverse Polish notation, this expression is written as:
+
+$$ 3 \quad 6 \quad - \quad 9 \quad 5 \quad 4 \quad + \quad \times \quad \div $$
+
+Aside from the benefit of not needing brackets, there’s another reason that reverse Polish notation is popular in computing.
+There is a simple algorithm for evaluating expressions written in reverse Polish notation, and it only requires a single pass through the expression.
+
+\bibliographystyle{plain}
+\bibliography{bibliography}
+\end{document}
