@@ -33,7 +33,7 @@ Consider the following bracketed expression.
 
 $$ ((5 + 4) \times 9) \div (6 - 3) $$
 
-This expression is written in what we call infix notation -- the (binary) operators are written inbetween their (two) operands.
+This expression is written in what we call infix notation -- the (binary) operators are written in-between their (two) operands.
 The operators in this case are the common addition, subtraction, multiplication and division.
 The operands are the numbers to which these operators are to be applied: 5, 4, 9, 6 and 3.
 In reverse Polish notation (RPN), this expression is written as:
@@ -57,7 +57,7 @@ Secondly, RPN expressions can be evaluated using a simple algorithm.
 The algorithm involves a single pass of reading the expression from left to right.
 The intermediate calculations can be done as they arise.
 Contrast this with expressions in infix notation such as $3 + 4 \times 5$.
-In this case the expression must be fully read from left to right before any intermediate calculationcan be performed and the expression can be interpreted.
+In this case the expression must be fully read from left to right before any intermediate calculation can be performed and the expression can be interpreted.
 
 Finally, when an RPN expression is to be evaluated by a computer, less memory and less instructions are used as compared with infix expressions.
 Less memory is needed, because the computer can apply the operators when they are read, as noted above.
@@ -83,7 +83,7 @@ An RPN expression is read item by item from left to right.
 Two simple rules are used as each item is read.
 The first is applied when the item is a number: push the number to the top of the stack.
 The second is applied when the item is an operator: pop the first element off the stack, pop the next element off the stack, apply the operator to them, and finally push the result to the top of the stack.
-So the rules are:
+So, the rules are:
 \begin{description}
   \item[Number:] push number to stack.
   \item[Operator:] pop twice from stack, apply operator, push result.
@@ -102,7 +102,7 @@ The following table depicts the stack as each symbol of our example RPN expressi
     \bottomrule
   \end{tabular}
 \end{center}
-So when the first item, $5$ is read, it is a number so it's pushed to the empty stack.
+So, when the first item, $5$ is read, it is a number so it's pushed to the empty stack.
 The second item, $4$, is a number too so it is pushed to the stack.
 The third is the operator $+$, so the top item on the stack ($4$) is popped, then the next item ($5$) is available for popping and is popped.
 The numbers are added to give $9$, and then the $9$ is pushed to the stack.
@@ -111,14 +111,14 @@ The final answer is what is left on the stack once the full expression has been 
 \subsection*{Order of the operands}
 One technicality to watch out for is the order of the operands.
 With addition and multiplication, the order does not matter.
-For instance $4+5=5+4=9$.
+For instance, $4+5=5+4=9$.
 However, with subtraction and division order does matter: $5-4 \neq 4-5$.
 
 In RPN, using the everyday operators like plus and minus, the convention is for $5 \ 4 \ -$ to mean $5-4$, and not $4-5$.
-It actually doesn't really matter as long as we agree on what we mean and are consistent.
+It doesn't really matter, so long as we agree on what we mean and are consistent.
 Consider the following idea: creating a new operator $\ominus$ that is defined as $5 \ominus 4 = 4 - 5$.
 Then we can use $\ominus$ in our RPN expressions.
-So $5 \ 4 \ \ominus$ in RPN would evaluate as $5 \ominus 4 = 4 - 5$ in infix.
+So, $5 \ 4 \ \ominus$ in RPN would evaluate as $5 \ominus 4 = 4 - 5$ in infix.
 
 \subsection*{Valid RPN expressions}
 An interesting question to ask is \emph{what combinations of operators and operands constitute valid RPN expressions?}
@@ -127,7 +127,7 @@ Neither is an expression like $+ \ 5 \ 4$.
 
 Note that valid RPN expressions always have one more number than operators.
 Every operator needs two operands, and so two operators need three operands, three need four, and so on.
-Also note that the stack algorithm needs to work.
+Also, note that the stack algorithm needs to work.
 It only works if the following two conditions hold:
 \begin{enumerate}
   \item There are at least two numbers on the stack whenever an operator is read.
@@ -140,7 +140,7 @@ While necessary, these last two stipulations are not sufficient.
 For example, the expression $1 \ 2 \ 3 \ + \ + \ + \ 4 \ 5 \ +$ both starts with two numbers and ends with an operator.
 It even has the correct number of operators relative to numbers.
 However, upon reading the third $+$ symbol, the stack has only a single item on it and the operator cannot be applied.
-We must read the expression and keep track of the size of the stack in order to confirm that the stack contains two numbers for every operator read.
+We must read the expression and keep track of the size of the stack to confirm that the stack contains two numbers for every operator read.
 Only then we will have a valid RPN expression.
 
 \nocite{*}
