@@ -1,4 +1,4 @@
-\documentclass[twocolumn]{iagproc}
+\documentclass[a4paper]{iagproc}
 
 \usepackage{xcolor}
 \usepackage{minted}
@@ -10,12 +10,12 @@
 \usepackage{multirow}
 \usepackage{booktabs}
 \usepackage{array}
-\usepackage{adjustbox}
 \usepackage{upquote}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{rotating}
 \usepackage[hidelinks]{hyperref}
+\usepackage{forest}
 \usetikzlibrary{mindmap,shadows, shapes, arrows, positioning}
 
 \title{Reverse Polish Notation}
@@ -142,6 +142,26 @@ It even has the correct number of operators relative to numbers.
 However, upon reading the third $+$ symbol, the stack has only a single item on it and the operator cannot be applied.
 We must read the expression and keep track of the size of the stack to confirm that the stack contains two numbers for every operator read.
 Only then we will have a valid RPN expression.
+
+\subsection*{Evaluation trees}
+RPN expressions can be decomposed into evaluation trees.
+An evaluation tree for an RPN expression has operators for internal vertices, where their operands are their children, and the numbers in the expression are the leaves.
+The first operand for an operator is drawn as the left-most child, and last is the right-most.
+So, for instance, the evaluation tree for the above expression is as follows.
+\begin{center}
+  \forestset{default preamble={for tree={circle,draw}}}
+  \begin{forest}
+    [$\div$
+      [$\times$
+        [$+$
+          [$5$]
+          [$4$]]]
+      [$-$
+        [$6$]
+        [$3$]]]
+  \end{forest}
+\end{center}
+
 
 \nocite{*}
 \bibliographystyle{plain}
